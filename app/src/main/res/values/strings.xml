@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">CarRental</string>
+    <string name="txt_head_favorites">Favorites</string>
+    <string name="txt_head_explore">Explore..</string>
+    <string name="txt_btn_explore">Explore all cars</string>
+    <string name="brand_hint">Brand</string>
+    <string name="model_hint">Model</string>
+    <string name="hint_year">Year</string>
+    <string name="seats_hint">Seats</string>
+    <string name="doors_hint">Doors</string>
+    <string name="price_hint">Price</string>
+    <string name="upload_image_hint">Upload Image</string>
+    <string name="save_menu">Save</string>
+    <string name="txt_eur">\" EUR\"</string>
+    <string name="eur_day">EUR/day</string>
+    <string name="btn_detail_text">Detail</string>
+    <string name="btn_profile_txt">Profile</string>
+</resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "294190865135",
+    "firebase_url": "https://carrental-a4dbe-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "carrental-a4dbe",
+    "storage_bucket": "carrental-a4dbe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294190865135:android:833651dad59f7a7aaed91a",
+        "android_client_info": {
+          "package_name": "be.pxl.mobdev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "294190865135-0oa026tv4vlj53buk71fabu09r2a9jel.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "be.pxl.mobdev",
+            "certificate_hash": "0d122d48f099ff7375b38eee265d90e8ad21cc82"
+          }
+        },
+        {
+          "client_id": "294190865135-v6nu24369na3d81fsbou14efg9gj78u3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIN5gW1KMnZxJqMVAK9qQmI6CHqqJhk7Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "294190865135-v6nu24369na3d81fsbou14efg9gj78u3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
