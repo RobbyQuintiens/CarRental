@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 import be.pxl.mobdev.R;
 import be.pxl.mobdev.activities.CarActivity;
+import be.pxl.mobdev.activities.DetailActivity;
 import be.pxl.mobdev.models.Car;
 import be.pxl.mobdev.util.FirebaseUtil;
 
@@ -138,10 +139,10 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
         public void onClick(View view) {
             int position = getAdapterPosition();
             Log.d("Click: ", String.valueOf(position));
-//            Car selectedCar = favCars.get(position);
-//            Intent intent = new Intent(view.getContext(), CarActivity.class);
-//            intent.putExtra("Deal", selectedCar);
-//            view.getContext().startActivity(intent);
+            Car selectedCar = favCars.get(position);
+            Intent intent = new Intent(view.getContext(), DetailActivity.class);
+            intent.putExtra("Car", selectedCar);
+            view.getContext().startActivity(intent);
         }
     }
 }
