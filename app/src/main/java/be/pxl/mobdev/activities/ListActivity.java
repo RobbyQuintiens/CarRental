@@ -22,6 +22,10 @@ import be.pxl.mobdev.views.CarAdapter;
 
 public class ListActivity extends AppCompatActivity {
 
+    //TODO add Sort By
+    //TODO add Loading message in RV onCreate
+    //TODO fix RecyclerView
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,8 +37,6 @@ public class ListActivity extends AppCompatActivity {
         super.onPause();
         FirebaseUtil.detachListener();
     }
-
-    //TODO fix RecyclerView
 
     @Override
     protected void onResume() {

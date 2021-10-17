@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<Car> carArrayList;
 
-    //TODO add Loading message in RV
+    //TODO add Loading message in RV onCreate
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
