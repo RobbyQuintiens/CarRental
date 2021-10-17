@@ -31,7 +31,7 @@ import be.pxl.mobdev.util.FirebaseUtil;
 
 public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
 
-    ArrayList<Car> favCars;
+    public ArrayList<Car> favCars;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private ChildEventListener mChildListener;
@@ -104,6 +104,11 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
     public int getItemViewType(int position) {
         return position;
     }
+
+    public ArrayList<Car> getFavCars(){
+        return favCars;
+    }
+
 
     public class CarViewHolder extends RecyclerView.ViewHolder{
 

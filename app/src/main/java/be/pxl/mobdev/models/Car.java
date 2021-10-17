@@ -1,6 +1,7 @@
 package be.pxl.mobdev.models;
 
 import java.io.Serializable;
+import java.util.Comparator;
 //import java.time.LocalDate;
 
 public class Car implements Serializable {
@@ -15,7 +16,7 @@ public class Car implements Serializable {
     private int dayPrice;
     private int countRented;
     private Status status;
-//    private LocalDate lockedAt;
+    //    private LocalDate lockedAt;
 //    private LocalDate confirmedAt;
     private String imageName;
     private String imageUrl;
@@ -94,7 +95,7 @@ public class Car implements Serializable {
         this.doors = doors;
     }
 
-    public double getDayPrice() {
+    public int getDayPrice() {
         return dayPrice;
     }
 
@@ -149,5 +150,33 @@ public class Car implements Serializable {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+    public static Comparator<Car> CarBrandAZComparator = new Comparator<Car>() {
+        @Override
+        public int compare(Car c1, Car c2) {
+            return c1.getBrand().compareTo(c2.getBrand());
+        }
+    };
+
+    public static Comparator<Car> CarBrandZAComparator = new Comparator<Car>() {
+        @Override
+        public int compare(Car c1, Car c2) {
+            return c2.getBrand().compareTo(c1.getBrand());
+        }
+    };
+
+    public static Comparator<Car> CarBrandPriceAscComparator = new Comparator<Car>() {
+        @Override
+        public int compare(Car c1, Car c2) {
+            return c1.getDayPrice() - c2.getDayPrice();
+        }
+    };
+
+    public static Comparator<Car> CarBrandPriceDescComparator = new Comparator<Car>() {
+        @Override
+        public int compare(Car c1, Car c2) {
+            return c2.getDayPrice() - c1.getDayPrice();
+        }
+    };
 
 }

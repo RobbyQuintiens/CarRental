@@ -52,14 +52,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvFavorites" />
 
-    <TextView
-        android:id="@+id/textView"
+    <Spinner
+        android:id="@+id/spinnerSort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/txt_margin_standard"
-        android:text="Add sort by"
+        android:layout_marginTop="@dimen/txt_margin_standard"
+        android:layout_marginEnd="@dimen/txt_margin_standard"
         app:layout_constraintBottom_toBottomOf="@+id/txtFavorites"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <LinearLayout
         android:layout_width="match_parent"

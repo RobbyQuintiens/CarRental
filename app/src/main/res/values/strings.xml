@@ -18,4 +18,10 @@
     <string name="txt_head_allcars">All Cars</string>
     <string name="edit_menu">Edit</string>
     <string name="hint_search">Search</string>
+    <string-array name="sort_types">
+        <item>Name Asc</item>
+        <item>Name Desc</item>
+        <item>Price Asc</item>
+        <item>Price Desc</item>
+    </string-array>
 </resources>
