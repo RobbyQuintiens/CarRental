@@ -16,7 +16,18 @@
         <entry key="..\:/Users/robby/AndroidStudioProjects/CarRental/app/src/main/res/layout/spinner_item.xml" value="0.1265625" />
         <entry key="..\:/Users/robby/AndroidStudioProjects/CarRental/app/src/main/res/menu/main_activity_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/robby/AndroidStudioProjects/CarRental/app/src/main/res/menu/save_menu.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout/activity_detail.xml" value="0.20153985507246377" />
+        <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout-land/activity_list.xml" value="0.10405643738977072" />
+        <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout/activity_car.xml" value="0.2" />
+        <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout/activity_detail.xml" value="0.2" />
+        <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout/activity_list.xml" value="0.2" />
+        <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout/activity_main.xml" value="0.1265625" />
+        <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout/fragment_detail.xml" value="0.2" />
+        <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout/fragment_list.xml" value="0.264" />
+        <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout/rv_carfav.xml" value="0.1" />
+        <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/menu/detail_activity_menu.xml" value="0.12291666666666666" />
+        <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/menu/edit_menu.xml" value="0.12291666666666666" />
+        <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/menu/main_activity_menu.xml" value="0.12291666666666666" />
+        <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/menu/save_menu.xml" value="0.12291666666666666" />
       </map>
     </option>
   </component>

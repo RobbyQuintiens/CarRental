@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/fragmentCarBrand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/txt_margin_standard"
+        android:layout_marginStart="@dimen/txt_margin_standard"
+        android:text="TextView"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fragmentCarModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/txt_margin_standard"
+        android:layout_marginStart="@dimen/txt_margin_standard"
+        android:text="TextView"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/fragmentCarBrand"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fragmentCarYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/txt_margin_standard"
+        android:layout_marginBottom="@dimen/txt_margin_standard"
+        android:layout_marginTop="@dimen/txt_margin_standard"
+        android:text="Year"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentCarBrand" />
+
+    <ImageView
+        android:id="@+id/ic_seats"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="@dimen/txt_margin_standard"
+        android:layout_marginBottom="7dp"
+        app:layout_constraintBottom_toBottomOf="@+id/fragmentCarYear"
+        app:layout_constraintStart_toEndOf="@+id/fragmentCarYear"
+        app:srcCompat="@drawable/ic_car_seat" />
+
+    <ImageView
+        android:id="@+id/ic_doors"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="@dimen/txt_margin_standard"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/fragmentCarSeats"
+        app:layout_constraintStart_toEndOf="@+id/fragmentCarSeats"
+        app:srcCompat="@drawable/ic_car_door_svgrepo_com" />
+
+    <TextView
+        android:id="@+id/fragmentCarSeats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/txt_margin_standard"
+        android:layout_marginBottom="3dp"
+        android:text="seats"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fragmentCarYear"
+        app:layout_constraintStart_toEndOf="@+id/ic_seats" />
+
+    <TextView
+        android:id="@+id/fragmentCarDoors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/txt_margin_standard"
+        android:layout_marginBottom="3dp"
+        android:text="doors"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fragmentCarYear"
+        app:layout_constraintStart_toEndOf="@+id/ic_doors" />
+
+    <ImageView
+        android:id="@+id/cCarImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/btn_margin_large"
+        android:layout_marginStart="@dimen/txt_margin_standard"
+        android:layout_marginEnd="@dimen/txt_margin_standard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentCarDoors"
+        tools:srcCompat="@tools:sample/avatars" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

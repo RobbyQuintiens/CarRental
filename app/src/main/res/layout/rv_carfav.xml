@@ -105,7 +105,7 @@
         android:layout_marginStart="@dimen/txt_margin_standard"
         android:text="@string/eur_day"
         android:textColor="#5B86E5"
-        android:textSize="20sp"
+        android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/cCarPrice"
         app:layout_constraintTop_toTopOf="@+id/cCarImage" />

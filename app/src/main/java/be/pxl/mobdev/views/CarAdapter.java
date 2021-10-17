@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -84,6 +85,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CarViewHolder holder, int position) {
+        holder.setIsRecyclable(false);
         Car car = favCars.get(position);
         holder.bind(car);
     }
@@ -93,8 +95,17 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
         return favCars.size();
     }
 
-    public class CarViewHolder extends RecyclerView.ViewHolder
-    implements View.OnClickListener{
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    public class CarViewHolder extends RecyclerView.ViewHolder{
 
         TextView cBrand;
         TextView cModel;
@@ -102,6 +113,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
         TextView cDoors;
         TextView cSeats;
         TextView cPrice;
+        Button btnDetail;
 
         public CarViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -112,7 +124,18 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
             cSeats = (TextView) itemView.findViewById(R.id.cCarSeats);
             cPrice = (TextView) itemView.findViewById(R.id.cCarPrice);
             imageCar = (ImageView) itemView.findViewById(R.id.cCarImage);
-            itemView.setOnClickListener(this);
+            btnDetail = (Button) itemView.findViewById(R.id.cBtnDetail);
+            btnDetail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    Car selectedCar = favCars.get(position);
+                    Intent intent = new Intent(view.getContext(), DetailActivity.class);
+                    intent.putExtra("Car", selectedCar);
+                    view.getContext().startActivity(intent);
+                }
+            });
+//            itemView.setOnClickListener(this);
         }
 
         public void bind(Car car){
@@ -135,14 +158,14 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
             }
         }
 
-        @Override
-        public void onClick(View view) {
-            int position = getAdapterPosition();
-            Log.d("Click: ", String.valueOf(position));
-            Car selectedCar = favCars.get(position);
-            Intent intent = new Intent(view.getContext(), DetailActivity.class);
-            intent.putExtra("Car", selectedCar);
-            view.getContext().startActivity(intent);
-        }
+//        @Override
+//        public void onClick(View view) {
+//            int position = getAdapterPosition();
+//            Log.d("Click: ", String.valueOf(position));
+//            Car selectedCar = favCars.get(position);
+//            Intent intent = new Intent(view.getContext(), DetailActivity.class);
+//            intent.putExtra("Car", selectedCar);
+//            view.getContext().startActivity(intent);
+//        }
     }
 }
