@@ -18,6 +18,8 @@
     <string name="txt_head_allcars">All Cars</string>
     <string name="edit_menu">Edit</string>
     <string name="hint_search">Search</string>
+    <string name="btn_book_text">Book</string>
+    <string name="btn_schedule_text">Schedule</string>
     <string-array name="sort_types">
         <item>Name Asc</item>
         <item>Name Desc</item>

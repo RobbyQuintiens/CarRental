@@ -47,6 +47,7 @@ import java.util.List;
 
 import be.pxl.mobdev.R;
 import be.pxl.mobdev.models.Car;
+import be.pxl.mobdev.models.Status;
 import be.pxl.mobdev.models.Type;
 import be.pxl.mobdev.util.FirebaseUtil;
 import be.pxl.mobdev.util.JSONConfig;
@@ -169,6 +170,7 @@ public class CarActivity extends AppCompatActivity{
         car.setSeats(Integer.parseInt(txtSeats.getText().toString()));
         car.setDoors(Integer.parseInt(txtDoors.getText().toString()));
         car.setDayPrice(Integer.parseInt(txtPrice.getText().toString()));
+        car.setStatus(Status.AVAILABLE);
         if (car.getId() == null) {
             mDatabaseReference.push().setValue(car);
         } else {
