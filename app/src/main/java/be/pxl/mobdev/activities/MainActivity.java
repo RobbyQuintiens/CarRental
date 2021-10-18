@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -36,16 +37,13 @@ import be.pxl.mobdev.views.CarAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Car> carArrayList;
-
-    //TODO add Loading message in RV onCreate
+    ArrayList<Car> mCarArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button btnExloreAll = (Button) findViewById(R.id.btnExplore);
-
         btnExloreAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,13 +100,12 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUtil.openFbReference("cardeals", this);
         RecyclerView rvFavorites = (RecyclerView) findViewById(R.id.rvFavorites);
         final CarAdapter adapter = new CarAdapter();
-        carArrayList = adapter.getFavCars();
-        setupSort(carArrayList, adapter);
+        mCarArrayList = adapter.getFavCars();
+        setupSort(mCarArrayList, adapter);
         rvFavorites.setAdapter(adapter);
         LinearLayoutManager carsLayoutManager =
                 new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         rvFavorites.setLayoutManager(carsLayoutManager);
-
         FirebaseUtil.attachListener();
     }
 
@@ -143,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                     carAdapter.notifyDataSetChanged();
                 }
+
             }
 
             @Override

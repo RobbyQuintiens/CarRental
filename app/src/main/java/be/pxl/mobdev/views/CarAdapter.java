@@ -36,6 +36,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
     private DatabaseReference mDatabaseReference;
     private ChildEventListener mChildListener;
     private ImageView imageCar;
+    public static final String CAR = "car";
 
     public CarAdapter(){
         mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
@@ -136,11 +137,11 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
                     int position = getAdapterPosition();
                     Car selectedCar = favCars.get(position);
                     Intent intent = new Intent(view.getContext(), DetailActivity.class);
-                    intent.putExtra("Car", selectedCar);
+                    intent.putExtra(Intent.EXTRA_TEXT, selectedCar);
+                    Log.d("Selected car: ", selectedCar.getBrand());
                     view.getContext().startActivity(intent);
                 }
             });
-//            itemView.setOnClickListener(this);
         }
 
         public void bind(Car car){
@@ -162,15 +163,5 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
                         .into(imageCar);
             }
         }
-
-//        @Override
-//        public void onClick(View view) {
-//            int position = getAdapterPosition();
-//            Log.d("Click: ", String.valueOf(position));
-//            Car selectedCar = favCars.get(position);
-//            Intent intent = new Intent(view.getContext(), DetailActivity.class);
-//            intent.putExtra("Car", selectedCar);
-//            view.getContext().startActivity(intent);
-//        }
     }
 }

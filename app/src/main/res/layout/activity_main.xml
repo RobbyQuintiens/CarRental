@@ -22,8 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"
-        android:layout_marginLeft="@dimen/txt_margin_standard"
-        android:layout_marginRight="@dimen/line_wide_margin"
+        android:layout_marginStart="@dimen/txt_margin_standard"
+        android:layout_marginEnd="@dimen/line_wide_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtFavorites" />
@@ -38,6 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line1" />
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnExplore"
