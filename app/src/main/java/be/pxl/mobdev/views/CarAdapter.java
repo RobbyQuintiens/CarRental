@@ -138,7 +138,6 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
                     Car selectedCar = favCars.get(position);
                     Intent intent = new Intent(view.getContext(), DetailActivity.class);
                     intent.putExtra(Intent.EXTRA_TEXT, selectedCar);
-                    Log.d("Selected car: ", selectedCar.getBrand());
                     view.getContext().startActivity(intent);
                 }
             });

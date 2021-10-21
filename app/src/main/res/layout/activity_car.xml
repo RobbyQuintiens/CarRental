@@ -44,53 +44,95 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtModel" />
 
+    <TextView
+        android:id="@+id/tvYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/txt_margin_standard"
+        android:paddingBottom="@dimen/tv_padding_bottom"
+        android:text="@string/txt_year"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtYear"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <EditText
         android:id="@+id/txtYear"
-        android:layout_width="125dp"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/txt_margin_standard"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@+id/txtSeats"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerType" />
+
+
+    <TextView
+        android:id="@+id/tvSeats"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/txt_margin_standard"
         android:layout_marginTop="@dimen/txt_margin_standard"
-        android:ems="10"
-        android:hint="@string/hint_year"
-        android:inputType="number"
-        app:layout_constraintStart_toStartOf="@+id/txtSeats"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerType"
-        android:importantForAutofill="no" />
+        android:paddingBottom="@dimen/tv_padding_bottom"
+        android:text="@string/txt_seats"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtSeats"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/txtSeats"
-        android:layout_width="125dp"
+        android:layout_width="55dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/txt_margin_standard"
         android:layout_marginTop="@dimen/txt_margin_standard"
         android:ems="10"
-        android:hint="@string/seats_hint"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvSeats"
         app:layout_constraintTop_toBottomOf="@+id/txtYear" />
+
+    <TextView
+        android:id="@+id/tvDoors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/txt_margin_standard"
+        android:layout_marginTop="@dimen/txt_margin_standard"
+        android:paddingBottom="@dimen/tv_padding_bottom"
+        android:text="@string/txt_doors"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtDoors"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/txtDoors"
-        android:layout_width="125dp"
+        android:layout_width="55dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/txt_margin_standard"
         android:layout_marginTop="@dimen/txt_margin_standard"
         android:ems="11"
-        android:hint="@string/doors_hint"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvSeats"
         app:layout_constraintTop_toBottomOf="@+id/txtSeats" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/txt_margin_standard"
+        android:layout_marginTop="@dimen/txt_margin_standard"
+        android:paddingBottom="@dimen/tv_padding_bottom"
+        android:text="@string/txt_price"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtPrice"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/txtPrice"
-        android:layout_width="125dp"
+        android:layout_width="55dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/txt_margin_standard"
         android:layout_marginTop="@dimen/txt_margin_standard"
         android:ems="10"
-        android:hint="@string/price_hint"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvSeats"
         app:layout_constraintTop_toBottomOf="@+id/txtDoors" />
 
     <androidx.appcompat.widget.AppCompatButton

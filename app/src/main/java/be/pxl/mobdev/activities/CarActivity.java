@@ -88,11 +88,20 @@ public class CarActivity extends AppCompatActivity{
         spinnerType = (Spinner) findViewById(R.id.spinnerType);
         spinnerType.setAdapter(new ArrayAdapter<Type>(this, R.layout.support_simple_spinner_dropdown_item, Type.values()));
         imageView = (ImageView) findViewById(R.id.image);
-        Car car = (Car) getIntent().getSerializableExtra("Car");
+        Intent detailIntent = getIntent();
+//        if (detailIntent.hasExtra(Intent.EXTRA_TEXT)) {
+//            car = (Car) detailIntent.getSerializableExtra(Intent.EXTRA_TEXT);
+//        }
+        Car car = (Car) getIntent().getSerializableExtra(Intent.EXTRA_TEXT);
         if (car == null) {
             car = new Car();
         }
         this.car = car;
+        txtModel.setText(car.getModel());
+        txtYear.setText(String.valueOf(car.getYear()));
+        txtDoors.setText(String.valueOf(car.getDoors()));
+        txtSeats.setText(String.valueOf(car.getSeats()));
+        txtPrice.setText(String.valueOf(car.getDayPrice()));
         showImage(car.getImageUrl());
         Button btnImage = findViewById(R.id.btnImage);
         btnImage.setOnClickListener(new View.OnClickListener() {

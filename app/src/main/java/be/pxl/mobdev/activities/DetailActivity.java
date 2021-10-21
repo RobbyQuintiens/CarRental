@@ -92,6 +92,7 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 car.setStatus(Status.RESERVED);
                 detailImage.setVisibility(View.GONE);
+                btnSchedule.setVisibility(View.GONE);
                 calendarView.setVisibility(View.VISIBLE);
                 calendarView.setMinDate(DATE);
                 btnCancel.setVisibility(View.VISIBLE);
@@ -102,6 +103,7 @@ public class DetailActivity extends AppCompatActivity {
                         btnBook.setVisibility(View.GONE);
                         btnCancel.setVisibility(View.GONE);
                         detailImage.setVisibility(View.VISIBLE);
+                        btnSchedule.setVisibility(View.VISIBLE);
                     }
                 });
                 btnBook.setVisibility(View.VISIBLE);
@@ -119,6 +121,7 @@ public class DetailActivity extends AppCompatActivity {
                         btnBook.setVisibility(View.GONE);
                         btnCancel.setVisibility(View.GONE);
                         detailImage.setVisibility(View.VISIBLE);
+                        btnSchedule.setVisibility(View.VISIBLE);
                         //TODO new intentpage final info of booking (userinfo, cardetail, date);
                         Toast.makeText(DetailActivity.this, "VoorbeeldTekst", Toast.LENGTH_LONG).show();
                     }
@@ -141,10 +144,15 @@ public class DetailActivity extends AppCompatActivity {
         return true;
     }
 
-    //TODO Edit menu
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.edit_menu) {
+            Car selectedCar = car;
+            Intent editIntent = new Intent(DetailActivity.this, CarActivity.class);
+            editIntent.putExtra(Intent.EXTRA_TEXT, selectedCar);
+            startActivity(editIntent);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
