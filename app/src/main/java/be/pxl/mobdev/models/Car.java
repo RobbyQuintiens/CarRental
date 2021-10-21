@@ -17,7 +17,6 @@ public class Car implements Serializable {
     private int dayPrice;
     private int countRented;
     private Status status;
-    //    private LocalDate lockedAt;
     private String confirmedAt;
     private String imageName;
     private String imageUrl;

@@ -16,7 +16,10 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import java.util.ArrayList;
+
 import be.pxl.mobdev.R;
+import be.pxl.mobdev.models.Car;
 import be.pxl.mobdev.util.FirebaseUtil;
 import be.pxl.mobdev.views.CarAdapter;
 
@@ -24,7 +27,6 @@ public class ListActivity extends AppCompatActivity {
 
     //TODO add Sort By
     //TODO add Loading message in RV onCreate
-    //TODO fix RecyclerView
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -1,5 +1,6 @@
 package be.pxl.mobdev.activities;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -7,13 +8,17 @@ import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -23,7 +28,9 @@ import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import be.pxl.mobdev.R;
 import be.pxl.mobdev.models.Car;
@@ -34,6 +41,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
+    private final static long DATE = System.currentTimeMillis();
     TextView detailBrand;
     TextView detailModel;
     TextView detailYear;
@@ -42,6 +50,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView detailPrice;
     Button btnSchedule;
     Button btnBook;
+    Button btnCancel;
     ImageView detailImage;
     CalendarView calendarView;
     Car car;
@@ -62,6 +71,7 @@ public class DetailActivity extends AppCompatActivity {
         detailPrice = (TextView) findViewById(R.id.fragmentPrice);
         btnSchedule = (Button) findViewById(R.id.fragmentButtonSchedule);
         btnBook = (Button) findViewById(R.id.fragmentButtonBook);
+        btnCancel = (Button) findViewById(R.id.fragmentButtonCancel);
         calendarView = (CalendarView) findViewById(R.id.fragmentCalendarView);
         Intent mainIntent = getIntent();
         if (mainIntent.hasExtra(Intent.EXTRA_TEXT)) {
@@ -76,24 +86,41 @@ public class DetailActivity extends AppCompatActivity {
         showImage(car.getImageUrl());
         calendarView.setVisibility(View.GONE);
         btnBook.setVisibility(View.GONE);
+        btnCancel.setVisibility(View.GONE);
         btnSchedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 car.setStatus(Status.RESERVED);
                 detailImage.setVisibility(View.GONE);
                 calendarView.setVisibility(View.VISIBLE);
+                calendarView.setMinDate(DATE);
+                btnCancel.setVisibility(View.VISIBLE);
+                btnCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        calendarView.setVisibility(View.GONE);
+                        btnBook.setVisibility(View.GONE);
+                        btnCancel.setVisibility(View.GONE);
+                        detailImage.setVisibility(View.VISIBLE);
+                    }
+                });
                 btnBook.setVisibility(View.VISIBLE);
                 btnBook.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                        //TODO attach userInfo to DB (Create new Model - User - Reservation)
+                        //TODO create 2 calendarViews (startDate - endDate)
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
                         String date = sdf.format(new Date(calendarView.getDate()));
                         car.setStatus(Status.HIRED);
                         car.setConfirmedAt(date);
                         mDatabaseReference.child(car.getId()).setValue(car);
                         calendarView.setVisibility(View.GONE);
                         btnBook.setVisibility(View.GONE);
+                        btnCancel.setVisibility(View.GONE);
                         detailImage.setVisibility(View.VISIBLE);
+                        //TODO new intentpage final info of booking (userinfo, cardetail, date);
+                        Toast.makeText(DetailActivity.this, "VoorbeeldTekst", Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -112,6 +139,13 @@ public class DetailActivity extends AppCompatActivity {
             menu.findItem(R.id.edit_menu).setEnabled(false);
         }
         return true;
+    }
+
+    //TODO Edit menu
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 
     private void showImage(String url) {

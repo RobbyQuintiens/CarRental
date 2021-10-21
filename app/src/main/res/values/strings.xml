@@ -20,6 +20,7 @@
     <string name="hint_search">Search</string>
     <string name="btn_book_text">Book</string>
     <string name="btn_schedule_text">Schedule</string>
+    <string name="btn_cancel_text">Cancel</string>
     <string-array name="sort_types">
         <item>Name Asc</item>
         <item>Name Desc</item>

@@ -82,7 +82,7 @@ public class FirebaseUtil {
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
+                Log.d("Removed","Child removed...");
             }
 
             @Override
