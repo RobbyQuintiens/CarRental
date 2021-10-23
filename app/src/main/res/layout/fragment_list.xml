@@ -10,21 +10,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/txt_margin_standard"
-        android:layout_marginTop="@dimen/btn_margin_top"
+        android:layout_marginTop="@dimen/btn_margin_large3"
         android:text="@string/txt_head_allcars"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBrand" />
-
-    <View
-        android:id="@+id/line2"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="@dimen/txt_margin_standard"
-        android:layout_marginRight="@dimen/line_wide_margin"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintBottom_toBottomOf="@+id/txtAllCars"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvAllCars"
@@ -33,21 +24,7 @@
         android:layout_marginStart="@dimen/txt_margin_standard"
         android:layout_marginTop="@dimen/btn_margin_top"
         android:layout_marginEnd="@dimen/txt_margin_standard"
-        app:layout_constraintTop_toBottomOf="@+id/line2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtAllCars" />
 
-    <SearchView
-        android:id="@+id/searchBrand"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/txt_margin_standard"
-        android:layout_marginTop="@dimen/txt_margin_standard"
-        android:layout_marginEnd="@dimen/line_wide_margin"
-        android:queryHint="@string/hint_search"
-        android:background="@drawable/bg_grey_rounded"
-        android:queryBackground="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:iconifiedByDefault="false"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

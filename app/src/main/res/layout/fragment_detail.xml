@@ -38,93 +38,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragmentCarBrand" />
 
-    <ImageView
-        android:id="@+id/ic_seats"
-        android:layout_width="17dp"
-        android:layout_height="17dp"
-        android:layout_marginStart="@dimen/txt_margin_standard"
-        android:layout_marginBottom="7dp"
-        app:layout_constraintBottom_toBottomOf="@+id/fragmentCarYear"
-        app:layout_constraintStart_toEndOf="@+id/fragmentCarYear"
-        app:srcCompat="@drawable/ic_car_seat" />
-
-    <ImageView
-        android:id="@+id/ic_doors"
-        android:layout_width="17dp"
-        android:layout_height="17dp"
-        android:layout_marginStart="@dimen/txt_margin_standard"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/fragmentCarSeats"
-        app:layout_constraintStart_toEndOf="@+id/fragmentCarSeats"
-        app:srcCompat="@drawable/ic_car_door_svgrepo_com" />
-
-    <TextView
-        android:id="@+id/fragmentCarSeats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/txt_margin_standard"
-        android:layout_marginBottom="3dp"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="@+id/fragmentCarYear"
-        app:layout_constraintStart_toEndOf="@+id/ic_seats" />
-
-    <TextView
-        android:id="@+id/fragmentCarDoors"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/txt_margin_standard"
-        android:layout_marginBottom="3dp"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="@+id/fragmentCarYear"
-        app:layout_constraintStart_toEndOf="@+id/ic_doors" />
 
     <ImageView
         android:id="@+id/fragmentImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/btn_margin_large3"
         android:layout_marginStart="@dimen/btn_margin_top"
         android:layout_marginEnd="@dimen/btn_margin_top"
+        android:layout_marginTop="@dimen/btn_margin_large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragmentCarDoors"
+        app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/fragmentPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/btn_margin_top"
-        android:layout_marginTop="@dimen/btn_margin_top"
-        android:textColor="#5B86E5"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragmentImage" />
-
-    <TextView
-        android:id="@+id/fragmentPerDay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/txt_margin_standard"
-        android:text="@string/eur_day"
-        android:textColor="#5B86E5"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/fragmentPrice"
-        app:layout_constraintTop_toTopOf="@+id/fragmentPrice" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/fragmentButtonSchedule"
-        android:layout_width="150dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="@dimen/btn_margin_top"
-        android:background="@drawable/gradient"
-        android:text="@string/btn_schedule_text"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fragmentPrice" />
 
     <CalendarView
         android:id="@+id/fragmentCalendarView"
@@ -137,7 +62,7 @@
         android:layout_marginBottom="@dimen/btn_margin_large2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragmentPrice" />
+        app:layout_constraintTop_toBottomOf="@+id/fragmentCarYear" />
 
 
     <LinearLayout
@@ -169,6 +94,7 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent" />
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/fragmentButtonBook"
                 android:layout_width="match_parent"
@@ -185,5 +111,143 @@
 
         </TableRow>
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/detailLayoutBackground"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:background="@drawable/bg_layout_radius_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/fragmentPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="price"
+            android:layout_marginStart="@dimen/btn_margin_top"
+            android:layout_marginTop="@dimen/btn_margin_top"
+            android:textColor="#ffffff"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/detailLayoutBackground"
+            app:layout_constraintTop_toTopOf="@id/detailLayoutBackground" />
+
+        <TextView
+            android:id="@+id/fragmentPerDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/txt_margin_standard"
+            android:text="@string/eur_day"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/fragmentPrice"
+            app:layout_constraintTop_toTopOf="@+id/fragmentPrice" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/btn_margin_large"
+            android:layout_marginTop="@dimen/btn_margin_top"
+            android:layout_marginEnd="@dimen/btn_margin_large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragmentPrice">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutDoors"
+                    android:layout_marginEnd="@dimen/btn_margin_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_layout_radius_border"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/imageDoorWhite"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="@dimen/margin_15dp"
+                        android:layout_weight="1"
+                        tools:srcCompat="@drawable/ic_car_door_white" />
+                    <TextView
+                        android:id="@+id/fragmentCarDoors"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_15dp"
+                        android:layout_marginEnd="@dimen/btn_margin_large"
+                        android:textSize="25sp"
+                        android:textColor="@color/white"
+                        android:text="doors"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutSeats"
+                    android:layout_marginStart="@dimen/btn_margin_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_layout_radius_border"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/imageSeatWhite"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="@dimen/margin_15dp"
+                        android:layout_weight="1"
+                        tools:srcCompat="@drawable/ic_car_seat_white" />
+                    <TextView
+                        android:id="@+id/fragmentCarSeats"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_15dp"
+                        android:layout_marginEnd="@dimen/btn_margin_large"
+                        android:textSize="25sp"
+                        android:textColor="@color/white"
+                        android:text="seats"/>
+                </LinearLayout>
+            </TableRow>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/btn_margin_large3"
+            android:layout_marginStart="@dimen/btn_margin_large"
+            android:layout_marginEnd="@dimen/btn_margin_large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+
+        </LinearLayout>
+
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/fragmentButtonSchedule"
+            android:layout_width="125dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="@dimen/btn_margin_large3"
+            android:layout_marginBottom="@dimen/btn_margin_large3"
+            android:background="@drawable/gradient_white"
+            android:text="@string/btn_schedule_text"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/detailLayoutBackground" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

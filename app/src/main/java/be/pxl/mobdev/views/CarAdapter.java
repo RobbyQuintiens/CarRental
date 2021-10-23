@@ -157,7 +157,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
             if (url != null && !url.isEmpty()){
                 Picasso.get()
                         .load(url)
-                        .resize(150, 150)
+                        .resize(200, 130)
                         .centerInside()
                         .into(imageCar);
             }
