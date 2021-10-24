@@ -20,12 +20,13 @@ public class Car implements Serializable {
     private String confirmedAt;
     private String imageName;
     private String imageUrl;
+    private Brandstof brandstof;
 
     public Car() {
     }
 
     public Car(String brand, String model, Type type,
-               int year, int seats, int doors,
+               int year, int seats, int doors, Brandstof brandstof,
                int dayPrice, String imageName, String imageUrl) {
         this.setId(id);
         this.setBrand(brand);
@@ -34,6 +35,7 @@ public class Car implements Serializable {
         this.setYear(year);
         this.setSeats(seats);
         this.setDoors(doors);
+        this.setBrandstof(brandstof);
         this.setDayPrice(dayPrice);
         this.setImageName(imageName);
         this.setImageUrl(imageUrl);
@@ -157,6 +159,14 @@ public class Car implements Serializable {
 
     public void setConfirmedAt(String confirmedAt) {
         this.confirmedAt = confirmedAt;
+    }
+
+    public Brandstof getBrandstof() {
+        return brandstof;
+    }
+
+    public void setBrandstof(Brandstof brandstof) {
+        this.brandstof = brandstof;
     }
 
     public static Comparator<Car> CarBrandAZComparator = new Comparator<Car>() {

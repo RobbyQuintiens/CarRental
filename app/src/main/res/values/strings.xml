@@ -22,9 +22,11 @@
     <string name="btn_schedule_text">Schedule</string>
     <string name="btn_cancel_text">Cancel</string>
     <string name="txt_year">Year</string>
-    <string name="txt_seats">Seats</string>
-    <string name="txt_doors">Doors</string>
     <string name="txt_price">Price</string>
+    <string name="txt_doors">Doors</string>
+    <string name="txt_seats">Seats</string>
+    <string name="txt_type">Type</string>
+    <string name="txt_petrol">Petrol</string>
     <string-array name="sort_types">
         <item>Name Asc</item>
         <item>Name Desc</item>

@@ -48,12 +48,15 @@ public class DetailActivity extends AppCompatActivity {
     TextView detailDoors;
     TextView detailSeats;
     TextView detailPrice;
+    TextView detailType;
+    TextView detailPetrol;
     Button btnSchedule;
     Button btnBook;
     Button btnCancel;
     ImageView detailImage;
     CalendarView calendarView;
     Car car;
+    ConstraintLayout detailLayoutBackground;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +67,10 @@ public class DetailActivity extends AppCompatActivity {
         detailBrand = (TextView) findViewById(R.id.fragmentCarBrand);
         detailModel = (TextView) findViewById(R.id.fragmentCarModel);
         detailYear = (TextView) findViewById(R.id.fragmentCarYear);
-        detailDoors = (TextView) findViewById(R.id.fragmentCarDoors);
-        detailSeats = (TextView) findViewById(R.id.fragmentCarSeats);
+        detailDoors = (TextView) findViewById(R.id.fragmentCarDoorsInput);
+        detailSeats = (TextView) findViewById(R.id.fragmentCarSeatsInput);
+        detailType = (TextView) findViewById(R.id.fragmentCarTypeInput);
+        detailPetrol = (TextView) findViewById(R.id.fragmentCarPetrolInput);
         detailImage = (ImageView) findViewById(R.id.fragmentImage);
         detailImage.setVisibility(View.VISIBLE);
         detailPrice = (TextView) findViewById(R.id.fragmentPrice);
@@ -73,6 +78,8 @@ public class DetailActivity extends AppCompatActivity {
         btnBook = (Button) findViewById(R.id.fragmentButtonBook);
         btnCancel = (Button) findViewById(R.id.fragmentButtonCancel);
         calendarView = (CalendarView) findViewById(R.id.fragmentCalendarView);
+        detailLayoutBackground = (ConstraintLayout) findViewById(R.id.detailLayoutBackground);
+        detailLayoutBackground.setVisibility(View.VISIBLE);
         Intent mainIntent = getIntent();
         if (mainIntent.hasExtra(Intent.EXTRA_TEXT)) {
             car = (Car) mainIntent.getSerializableExtra(Intent.EXTRA_TEXT);
@@ -82,6 +89,8 @@ public class DetailActivity extends AppCompatActivity {
         detailYear.setText(String.valueOf(car.getYear()));
         detailDoors.setText(String.valueOf(car.getDoors()));
         detailSeats.setText(String.valueOf(car.getSeats()));
+        detailType.setText(String.valueOf(car.getType()));
+        detailPetrol.setText(String.valueOf(car.getBrandstof()));
         detailPrice.setText(String.valueOf(car.getDayPrice()));
         showImage(car.getImageUrl());
         calendarView.setVisibility(View.GONE);
@@ -93,6 +102,7 @@ public class DetailActivity extends AppCompatActivity {
                 car.setStatus(Status.RESERVED);
                 detailImage.setVisibility(View.GONE);
                 btnSchedule.setVisibility(View.GONE);
+                detailLayoutBackground.setVisibility(View.GONE);
                 calendarView.setVisibility(View.VISIBLE);
                 calendarView.setMinDate(DATE);
                 btnCancel.setVisibility(View.VISIBLE);
@@ -104,6 +114,7 @@ public class DetailActivity extends AppCompatActivity {
                         btnCancel.setVisibility(View.GONE);
                         detailImage.setVisibility(View.VISIBLE);
                         btnSchedule.setVisibility(View.VISIBLE);
+                        detailLayoutBackground.setVisibility(View.VISIBLE);
                     }
                 });
                 btnBook.setVisibility(View.VISIBLE);
@@ -122,6 +133,7 @@ public class DetailActivity extends AppCompatActivity {
                         btnCancel.setVisibility(View.GONE);
                         detailImage.setVisibility(View.VISIBLE);
                         btnSchedule.setVisibility(View.VISIBLE);
+                        detailLayoutBackground.setVisibility(View.VISIBLE);
                         //TODO new intentpage final info of booking (userinfo, cardetail, date);
                         Toast.makeText(DetailActivity.this, "VoorbeeldTekst", Toast.LENGTH_LONG).show();
                     }

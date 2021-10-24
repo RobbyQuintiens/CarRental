@@ -44,16 +44,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtModel" />
 
+    <Spinner
+        android:id="@+id/spinnerPetrol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/txt_margin_standard"
+        android:layout_marginStart="@dimen/txt_margin_standard"
+        android:layout_marginEnd="@dimen/txt_margin_standard"
+        android:layout_marginBottom="@dimen/txt_margin_standard"
+        android:ems="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerType" />
+
     <TextView
         android:id="@+id/tvYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/txt_margin_standard"
+        android:layout_marginTop="@dimen/txt_margin_standard"
         android:paddingBottom="@dimen/tv_padding_bottom"
         android:text="@string/txt_year"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="@+id/txtYear"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerPetrol" />
 
     <EditText
         android:id="@+id/txtYear"
@@ -63,7 +78,7 @@
         android:ems="10"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="@+id/txtSeats"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerType" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerPetrol" />
 
 
     <TextView

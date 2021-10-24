@@ -46,6 +46,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import be.pxl.mobdev.R;
+import be.pxl.mobdev.models.Brandstof;
 import be.pxl.mobdev.models.Car;
 import be.pxl.mobdev.models.Status;
 import be.pxl.mobdev.models.Type;
@@ -62,6 +63,7 @@ public class CarActivity extends AppCompatActivity{
     Spinner spinnerBrand;
     EditText txtModel;
     Spinner spinnerType;
+    Spinner spinnerPetrol;
     EditText txtYear;
     EditText txtSeats;
     EditText txtDoors;
@@ -87,11 +89,10 @@ public class CarActivity extends AppCompatActivity{
         txtPrice = (EditText) findViewById(R.id.txtPrice);
         spinnerType = (Spinner) findViewById(R.id.spinnerType);
         spinnerType.setAdapter(new ArrayAdapter<Type>(this, R.layout.support_simple_spinner_dropdown_item, Type.values()));
+        spinnerPetrol = (Spinner) findViewById(R.id.spinnerPetrol);
+        spinnerPetrol.setAdapter(new ArrayAdapter<Brandstof>(this, R.layout.support_simple_spinner_dropdown_item, Brandstof.values()));
         imageView = (ImageView) findViewById(R.id.image);
         Intent detailIntent = getIntent();
-//        if (detailIntent.hasExtra(Intent.EXTRA_TEXT)) {
-//            car = (Car) detailIntent.getSerializableExtra(Intent.EXTRA_TEXT);
-//        }
         Car car = (Car) getIntent().getSerializableExtra(Intent.EXTRA_TEXT);
         if (car == null) {
             car = new Car();
@@ -178,6 +179,7 @@ public class CarActivity extends AppCompatActivity{
         car.setYear(Integer.parseInt(txtYear.getText().toString()));
         car.setSeats(Integer.parseInt(txtSeats.getText().toString()));
         car.setDoors(Integer.parseInt(txtDoors.getText().toString()));
+        car.setBrandstof((Brandstof) spinnerPetrol.getSelectedItem());
         car.setDayPrice(Integer.parseInt(txtPrice.getText().toString()));
         car.setStatus(Status.AVAILABLE);
         if (car.getId() == null) {

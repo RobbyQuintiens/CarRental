@@ -9,4 +9,7 @@
     <dimen name="btn_margin_large3">20dp</dimen>
     <dimen name="tv_padding_bottom">11dp</dimen>
     <dimen name="margin_15dp">15dp</dimen>
+    <dimen name="margin_100dp">100dp</dimen>
+    <dimen name="marign_80dp">80dp</dimen>
+    <dimen name="margin_165dp">165dp</dimen>
 </resources>
