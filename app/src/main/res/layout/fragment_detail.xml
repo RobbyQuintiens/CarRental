@@ -127,6 +127,7 @@
                 android:text="@string/btn_cancel_text"
                 android:textColor="@color/white"
                 android:textSize="20sp"
+                android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -141,6 +142,7 @@
                 android:text="@string/btn_next_text"
                 android:textColor="@color/white"
                 android:textSize="20sp"
+                android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -155,6 +157,7 @@
                 android:text="@string/btn_book_text"
                 android:textColor="@color/white"
                 android:textSize="20sp"
+                android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent" />
         </TableRow>
     </LinearLayout>

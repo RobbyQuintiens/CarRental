@@ -61,6 +61,8 @@ public class DetailActivity extends AppCompatActivity {
     CalendarView calendarViewTill;
     Car car;
     ConstraintLayout detailLayoutBackground;
+    String dateFrom;
+    String dateTill;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,6 +135,13 @@ public class DetailActivity extends AppCompatActivity {
                         detailLayoutBackground.setVisibility(View.VISIBLE);
                     }
                 });
+                calendarViewFrom.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+                    @Override
+                    public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
+                        int m = month + 1;
+                        dateFrom = day + "/" + m  + "/" + year;
+                    }
+                });
                 btnNext.setVisibility(View.VISIBLE);
                 btnNext.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -143,14 +152,23 @@ public class DetailActivity extends AppCompatActivity {
                         btnBook.setVisibility(View.VISIBLE);
                         calendarViewFrom.setVisibility(View.GONE);
                         calendarViewTill.setVisibility(View.VISIBLE);
+                        calendarViewTill.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+                            @Override
+                            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
+                                int m = month + 1;
+                                dateTill = day + "/" + m  + "/" + year;
+                            }
+                        });
                         btnBook.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 //TODO attach userInfo to DB (Create new Model - User - Reservation)
                                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-                                String date = sdf.format(new Date(calendarViewFrom.getDate()));
+                                String dateConfirmed = sdf.format(new Date(DATE));
                                 car.setStatus(Status.HIRED);
-                                car.setConfirmedAt(date);
+                                car.setConfirmedAt(dateConfirmed);
+                                car.setHiredFromDate(dateFrom);
+                                car.setHiredTillDate(dateTill);
                                 mDatabaseReference.child(car.getId()).setValue(car);
                                 calendarViewTill.setVisibility(View.GONE);
                                 btnBook.setVisibility(View.GONE);
@@ -160,7 +178,9 @@ public class DetailActivity extends AppCompatActivity {
                                 btnSchedule.setVisibility(View.VISIBLE);
                                 detailLayoutBackground.setVisibility(View.VISIBLE);
                                 //TODO new intentpage final info of booking (userinfo, cardetail, date);
-                                Toast.makeText(DetailActivity.this, "VoorbeeldTekst", Toast.LENGTH_LONG).show();
+                                Intent confirmIntent = new Intent(DetailActivity.this, ConfirmedActivity.class);
+                                confirmIntent.putExtra(Intent.EXTRA_TEXT, car);
+                                startActivity(confirmIntent);
                             }
                         });
                     }
