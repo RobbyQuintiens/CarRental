@@ -50,11 +50,15 @@ public class DetailActivity extends AppCompatActivity {
     TextView detailPrice;
     TextView detailType;
     TextView detailPetrol;
+    TextView tillText;
+    TextView fromText;
     Button btnSchedule;
+    Button btnNext;
     Button btnBook;
     Button btnCancel;
     ImageView detailImage;
-    CalendarView calendarView;
+    CalendarView calendarViewFrom;
+    CalendarView calendarViewTill;
     Car car;
     ConstraintLayout detailLayoutBackground;
 
@@ -76,8 +80,12 @@ public class DetailActivity extends AppCompatActivity {
         detailPrice = (TextView) findViewById(R.id.fragmentPrice);
         btnSchedule = (Button) findViewById(R.id.fragmentButtonSchedule);
         btnBook = (Button) findViewById(R.id.fragmentButtonBook);
+        btnNext = (Button) findViewById(R.id.fragmentButtonNext);
         btnCancel = (Button) findViewById(R.id.fragmentButtonCancel);
-        calendarView = (CalendarView) findViewById(R.id.fragmentCalendarView);
+        fromText = (TextView) findViewById(R.id.textFrom);
+        tillText = (TextView) findViewById(R.id.textTill);
+        calendarViewFrom = (CalendarView) findViewById(R.id.fragmentCalendarViewFrom);
+        calendarViewTill = (CalendarView) findViewById(R.id.fragmentCalendarViewTill);
         detailLayoutBackground = (ConstraintLayout) findViewById(R.id.detailLayoutBackground);
         detailLayoutBackground.setVisibility(View.VISIBLE);
         Intent mainIntent = getIntent();
@@ -93,8 +101,12 @@ public class DetailActivity extends AppCompatActivity {
         detailPetrol.setText(String.valueOf(car.getBrandstof()));
         detailPrice.setText(String.valueOf(car.getDayPrice()));
         showImage(car.getImageUrl());
-        calendarView.setVisibility(View.GONE);
+        fromText.setVisibility(View.GONE);
+        tillText.setVisibility(View.GONE);
+        calendarViewFrom.setVisibility(View.GONE);
+        calendarViewTill.setVisibility(View.GONE);
         btnBook.setVisibility(View.GONE);
+        btnNext.setVisibility(View.GONE);
         btnCancel.setVisibility(View.GONE);
         btnSchedule.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,13 +115,17 @@ public class DetailActivity extends AppCompatActivity {
                 detailImage.setVisibility(View.GONE);
                 btnSchedule.setVisibility(View.GONE);
                 detailLayoutBackground.setVisibility(View.GONE);
-                calendarView.setVisibility(View.VISIBLE);
-                calendarView.setMinDate(DATE);
+                fromText.setVisibility(View.VISIBLE);
+                calendarViewFrom.setVisibility(View.VISIBLE);
+                calendarViewFrom.setMinDate(DATE);
                 btnCancel.setVisibility(View.VISIBLE);
                 btnCancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        calendarView.setVisibility(View.GONE);
+                        fromText.setVisibility(View.GONE);
+                        tillText.setVisibility(View.GONE);
+                        calendarViewFrom.setVisibility(View.GONE);
+                        calendarViewTill.setVisibility(View.GONE);
                         btnBook.setVisibility(View.GONE);
                         btnCancel.setVisibility(View.GONE);
                         detailImage.setVisibility(View.VISIBLE);
@@ -117,25 +133,36 @@ public class DetailActivity extends AppCompatActivity {
                         detailLayoutBackground.setVisibility(View.VISIBLE);
                     }
                 });
-                btnBook.setVisibility(View.VISIBLE);
-                btnBook.setOnClickListener(new View.OnClickListener() {
+                btnNext.setVisibility(View.VISIBLE);
+                btnNext.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //TODO attach userInfo to DB (Create new Model - User - Reservation)
-                        //TODO create 2 calendarViews (startDate - endDate)
-                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-                        String date = sdf.format(new Date(calendarView.getDate()));
-                        car.setStatus(Status.HIRED);
-                        car.setConfirmedAt(date);
-                        mDatabaseReference.child(car.getId()).setValue(car);
-                        calendarView.setVisibility(View.GONE);
-                        btnBook.setVisibility(View.GONE);
-                        btnCancel.setVisibility(View.GONE);
-                        detailImage.setVisibility(View.VISIBLE);
-                        btnSchedule.setVisibility(View.VISIBLE);
-                        detailLayoutBackground.setVisibility(View.VISIBLE);
-                        //TODO new intentpage final info of booking (userinfo, cardetail, date);
-                        Toast.makeText(DetailActivity.this, "VoorbeeldTekst", Toast.LENGTH_LONG).show();
+                        fromText.setVisibility(View.GONE);
+                        tillText.setVisibility(View.VISIBLE);
+                        btnNext.setVisibility(View.GONE);
+                        btnBook.setVisibility(View.VISIBLE);
+                        calendarViewFrom.setVisibility(View.GONE);
+                        calendarViewTill.setVisibility(View.VISIBLE);
+                        btnBook.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                //TODO attach userInfo to DB (Create new Model - User - Reservation)
+                                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                                String date = sdf.format(new Date(calendarViewFrom.getDate()));
+                                car.setStatus(Status.HIRED);
+                                car.setConfirmedAt(date);
+                                mDatabaseReference.child(car.getId()).setValue(car);
+                                calendarViewTill.setVisibility(View.GONE);
+                                btnBook.setVisibility(View.GONE);
+                                btnCancel.setVisibility(View.GONE);
+                                tillText.setVisibility(View.GONE);
+                                detailImage.setVisibility(View.VISIBLE);
+                                btnSchedule.setVisibility(View.VISIBLE);
+                                detailLayoutBackground.setVisibility(View.VISIBLE);
+                                //TODO new intentpage final info of booking (userinfo, cardetail, date);
+                                Toast.makeText(DetailActivity.this, "VoorbeeldTekst", Toast.LENGTH_LONG).show();
+                            }
+                        });
                     }
                 });
             }

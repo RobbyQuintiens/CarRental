@@ -18,6 +18,8 @@ public class Car implements Serializable {
     private int countRented;
     private Status status;
     private String confirmedAt;
+    private String hiredFromDate;
+    private String hiredTillDate;
     private String imageName;
     private String imageUrl;
     private Brandstof brandstof;
@@ -167,6 +169,22 @@ public class Car implements Serializable {
 
     public void setBrandstof(Brandstof brandstof) {
         this.brandstof = brandstof;
+    }
+
+    public String getHiredFromDate() {
+        return hiredFromDate;
+    }
+
+    public void setHiredFromDate(String hiredFromDate) {
+        this.hiredFromDate = hiredFromDate;
+    }
+
+    public String getHiredTillDate() {
+        return hiredTillDate;
+    }
+
+    public void setHiredTillDate(String hiredTillDate) {
+        this.hiredTillDate = hiredTillDate;
     }
 
     public static Comparator<Car> CarBrandAZComparator = new Comparator<Car>() {

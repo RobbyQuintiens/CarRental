@@ -26,7 +26,10 @@
     <string name="txt_doors">Doors</string>
     <string name="txt_seats">Seats</string>
     <string name="txt_type">Type</string>
-    <string name="txt_petrol">Petrol</string>
+    <string name="txt_petrol">Fuel</string>
+    <string name="txt_from">From</string>
+    <string name="txt_till">Till</string>
+    <string name="btn_next_text">Next</string>
     <string-array name="sort_types">
         <item>Name Asc</item>
         <item>Name Desc</item>
