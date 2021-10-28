@@ -30,6 +30,12 @@
     <string name="txt_from">From</string>
     <string name="txt_till">Till</string>
     <string name="btn_next_text">Next</string>
+    <string name="txt_head_confirmation">Confirmation</string>
+    <string name="txt_car_capital">Car:</string>
+    <string name="txt_type_capital">Type:</string>
+    <string name="text_date_capital">Date:</string>
+    <string name="dash">-</string>
+    <string name="txt_price_capital">Price:</string>
     <string-array name="sort_types">
         <item>Name Asc</item>
         <item>Name Desc</item>

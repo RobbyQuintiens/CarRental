@@ -3,6 +3,7 @@ package be.pxl.mobdev.activities;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Point;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
@@ -12,13 +13,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -27,8 +26,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
-import java.util.Calendar;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoField;
 import java.util.Date;
 import java.util.Locale;
 
@@ -111,6 +113,7 @@ public class DetailActivity extends AppCompatActivity {
         btnNext.setVisibility(View.GONE);
         btnCancel.setVisibility(View.GONE);
         btnSchedule.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 car.setStatus(Status.RESERVED);
@@ -120,28 +123,15 @@ public class DetailActivity extends AppCompatActivity {
                 fromText.setVisibility(View.VISIBLE);
                 calendarViewFrom.setVisibility(View.VISIBLE);
                 calendarViewFrom.setMinDate(DATE);
-                btnCancel.setVisibility(View.VISIBLE);
-                btnCancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        fromText.setVisibility(View.GONE);
-                        tillText.setVisibility(View.GONE);
-                        calendarViewFrom.setVisibility(View.GONE);
-                        calendarViewTill.setVisibility(View.GONE);
-                        btnBook.setVisibility(View.GONE);
-                        btnCancel.setVisibility(View.GONE);
-                        detailImage.setVisibility(View.VISIBLE);
-                        btnSchedule.setVisibility(View.VISIBLE);
-                        detailLayoutBackground.setVisibility(View.VISIBLE);
-                    }
-                });
                 calendarViewFrom.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.O)
                     @Override
                     public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
-                        int m = month + 1;
-                        dateFrom = day + "/" + m  + "/" + year;
+                        dateFrom = String.valueOf(LocalDate.of(year, month+1, day));
+                        calendarViewTill.setMinDate(0);
                     }
                 });
+                dateFrom = checkIfDateSelected(dateFrom);
                 btnNext.setVisibility(View.VISIBLE);
                 btnNext.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -151,14 +141,17 @@ public class DetailActivity extends AppCompatActivity {
                         btnNext.setVisibility(View.GONE);
                         btnBook.setVisibility(View.VISIBLE);
                         calendarViewFrom.setVisibility(View.GONE);
+                        calendarViewTill.setDate(getMinTillDate(dateFrom));
+                        calendarViewTill.setMinDate(getMinTillDate(dateFrom));
                         calendarViewTill.setVisibility(View.VISIBLE);
                         calendarViewTill.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+                            @RequiresApi(api = Build.VERSION_CODES.O)
                             @Override
                             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
-                                int m = month + 1;
-                                dateTill = day + "/" + m  + "/" + year;
+                                dateTill = String.valueOf(LocalDate.of(year, month+1, day));
                             }
                         });
+                        dateTill = checkIfDateSelected(dateTill);
                         btnBook.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -177,12 +170,26 @@ public class DetailActivity extends AppCompatActivity {
                                 detailImage.setVisibility(View.VISIBLE);
                                 btnSchedule.setVisibility(View.VISIBLE);
                                 detailLayoutBackground.setVisibility(View.VISIBLE);
-                                //TODO new intentpage final info of booking (userinfo, cardetail, date);
                                 Intent confirmIntent = new Intent(DetailActivity.this, ConfirmedActivity.class);
                                 confirmIntent.putExtra(Intent.EXTRA_TEXT, car);
                                 startActivity(confirmIntent);
                             }
                         });
+                    }
+                });
+                btnCancel.setVisibility(View.VISIBLE);
+                btnCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        fromText.setVisibility(View.GONE);
+                        tillText.setVisibility(View.GONE);
+                        calendarViewFrom.setVisibility(View.GONE);
+                        calendarViewTill.setVisibility(View.GONE);
+                        btnBook.setVisibility(View.GONE);
+                        btnCancel.setVisibility(View.GONE);
+                        detailImage.setVisibility(View.VISIBLE);
+                        btnSchedule.setVisibility(View.VISIBLE);
+                        detailLayoutBackground.setVisibility(View.VISIBLE);
                     }
                 });
             }
@@ -202,6 +209,7 @@ public class DetailActivity extends AppCompatActivity {
         }
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -231,6 +239,24 @@ public class DetailActivity extends AppCompatActivity {
         Point size = new Point();
         display.getSize(size);
         return size.x;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private String checkIfDateSelected(String date) {
+        if (date == null || date.isEmpty()) {
+            LocalDate date2 =
+                    Instant.ofEpochMilli(DATE).atZone(ZoneId.systemDefault()).toLocalDate();
+            return String.valueOf(date2);
+        }
+        return date;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private long getMinTillDate(String dateFrom){
+        LocalDate dt = LocalDate.parse(dateFrom);
+        Long miliseconds = dt.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+        Log.d("Time: ", String.valueOf(miliseconds));
+        return miliseconds;
     }
 
 }

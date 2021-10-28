@@ -6,12 +6,122 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtConfirmation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Check"
+        android:layout_marginStart="@dimen/txt_margin_standard"
+        android:layout_marginTop="@dimen/btn_margin_large3"
+        android:text="@string/txt_head_confirmation"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textTitleCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/btn_margin_top"
+        android:layout_marginTop="@dimen/btn_margin_large3"
+        android:text="@string/txt_car_capital"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtConfirmation" />
+
+    <TextView
+        android:id="@+id/textCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textTitleCar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textTitleType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/btn_margin_top"
+        android:layout_marginTop="@dimen/txt_margin_standard"
+        android:text="@string/txt_type_capital"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleCar" />
+
+    <TextView
+        android:id="@+id/textType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textTitleType"
+        app:layout_constraintStart_toStartOf="@+id/textCar" />
+
+    <TextView
+        android:id="@+id/textTitleDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/btn_margin_top"
+        android:layout_marginTop="@dimen/txt_margin_standard"
+        android:text="@string/text_date_capital"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleType" />
+
+    <TextView
+        android:id="@+id/textFromDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textTitleDate"
+        app:layout_constraintStart_toStartOf="@+id/textType" />
+
+    <TextView
+        android:id="@+id/textDash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/btn_margin_top"
+        android:text="@string/dash"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textFromDate"
+        app:layout_constraintStart_toEndOf="@+id/textFromDate" />
+
+    <TextView
+        android:id="@+id/textTillDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginStart="@dimen/btn_margin_top"
+        app:layout_constraintBottom_toBottomOf="@+id/textFromDate"
+        app:layout_constraintStart_toEndOf="@+id/textDash" />
+
+    <TextView
+        android:id="@+id/textPriceTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/btn_margin_top"
+        android:layout_marginTop="@dimen/txt_margin_standard"
+        android:text="@string/txt_price_capital"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleDate" />
+
+    <TextView
+        android:id="@+id/textPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textPriceTitle"
+        app:layout_constraintStart_toStartOf="@+id/textCar" />
+
+    <ImageView
+        android:id="@+id/imageViewCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
