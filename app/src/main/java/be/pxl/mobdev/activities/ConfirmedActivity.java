@@ -3,9 +3,13 @@ package be.pxl.mobdev.activities;
 import static java.util.concurrent.TimeUnit.DAYS;
 
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -33,7 +38,7 @@ public class ConfirmedActivity extends AppCompatActivity {
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
-    private final static DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    private final static DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     TextView car;
     TextView type;
     TextView fromDate;
@@ -41,6 +46,7 @@ public class ConfirmedActivity extends AppCompatActivity {
     TextView price;
     ImageView carImage;
     Car carObject;
+    Button btnHome;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,6 +61,8 @@ public class ConfirmedActivity extends AppCompatActivity {
         fromDate = (TextView) findViewById(R.id.textFromDate);
         tillDate = (TextView) findViewById(R.id.textTillDate);
         price = (TextView) findViewById(R.id.textPrice);
+        carImage = (ImageView) findViewById(R.id.imageViewCar);
+        btnHome = (Button) findViewById(R.id.btnHome);
 
         Intent detailIntent = getIntent();
         if (detailIntent.hasExtra(Intent.EXTRA_TEXT)) {
@@ -65,21 +73,48 @@ public class ConfirmedActivity extends AppCompatActivity {
         type.setText(carObject.getType().toString());
         fromDate.setText(carObject.getHiredFromDate());
         tillDate.setText(carObject.getHiredTillDate());
-//        try {
-//            price.setText(String.valueOf(getPrice(carObject.getHiredFromDate(), carObject.getHiredTillDate(), carObject.getDayPrice())));
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            price.setText(String.valueOf(getPrice(carObject.getHiredFromDate(), carObject.getHiredTillDate(), carObject.getDayPrice())) + " EUR");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        showImage(carObject.getImageUrl());
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ConfirmedActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
-//    private int getPrice(String fromDate, String tillDate, int price) throws ParseException {
-//        String date = "16/08/2016";
-//        String date2 = "20/08/2016";
-//
-//        LocalDate from = LocalDate.parse(date, FORMATTER);
-//        LocalDate till = LocalDate.parse(date2, FORMATTER);
-//        Period period = Period.between(till, from);
-//        int days = Math.abs(period.getDays());
-//        return days * price;
-//    }
+    private int getPrice(String fromDate, String tillDate, int price) throws ParseException {
+        LocalDate from = LocalDate.parse(fromDate, FORMATTER);
+        LocalDate till = LocalDate.parse(tillDate, FORMATTER);
+        Period period = Period.between(till, from);
+        int days = Math.abs(period.getDays());
+        if (days == 0) {
+            days = 1;
+        }
+        return days * price;
+    }
+
+    private void showImage(String url) {
+        int width = getDisplayWidth();
+        if (url != null && !url.isEmpty()) {
+            Picasso.get()
+                    .load(url)
+                    .resize(width, 500)
+                    .centerInside()
+                    .into(carImage);
+        }
+    }
+
+    private int getDisplayWidth() {
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        return size.x;
+    }
 }
