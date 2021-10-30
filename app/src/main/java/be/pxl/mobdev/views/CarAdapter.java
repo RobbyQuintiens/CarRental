@@ -2,7 +2,6 @@ package be.pxl.mobdev.views;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,31 +23,35 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import be.pxl.mobdev.R;
-import be.pxl.mobdev.activities.CarActivity;
 import be.pxl.mobdev.activities.DetailActivity;
 import be.pxl.mobdev.models.Car;
 import be.pxl.mobdev.util.FirebaseUtil;
 
 public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
 
-    public ArrayList<Car> favCars;
+    public ArrayList<Car> favCars = new ArrayList<>();
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private ChildEventListener mChildListener;
     private ImageView imageCar;
     public static final String CAR = "car";
 
-    public CarAdapter(){
+    public CarAdapter(boolean favorite) {
         mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
         mDatabaseReference = FirebaseUtil.mDatabaseReference;
-        this.favCars = new ArrayList<Car>();
         mChildListener = new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Car car = snapshot.getValue(Car.class);
                 assert car != null;
                 car.setId(snapshot.getKey());
-                favCars.add(car);
+                if (favorite){
+                    if (car.isFavorite()) {
+                        favCars.add(car);
+                    }
+                } else {
+                    favCars.add(car);
+                }
                 notifyItemInserted(favCars.size() - 1);
             }
 
@@ -106,12 +109,13 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
         return position;
     }
 
-    public ArrayList<Car> getFavCars(){
+
+    public ArrayList<Car> getFavCars() {
         return favCars;
     }
 
 
-    public class CarViewHolder extends RecyclerView.ViewHolder{
+    public class CarViewHolder extends RecyclerView.ViewHolder {
 
         TextView cBrand;
         TextView cModel;
@@ -143,7 +147,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
             });
         }
 
-        public void bind(Car car){
+        public void bind(Car car) {
             cBrand.setText(car.getBrand());
             cModel.setText(car.getModel());
             cYear.setText(String.valueOf(car.getYear()));
@@ -154,7 +158,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
         }
 
         private void showImage(String url) {
-            if (url != null && !url.isEmpty()){
+            if (url != null && !url.isEmpty()) {
                 Picasso.get()
                         .load(url)
                         .resize(200, 130)

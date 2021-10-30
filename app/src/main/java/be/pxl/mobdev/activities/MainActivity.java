@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,19 +14,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import be.pxl.mobdev.R;
 import be.pxl.mobdev.models.Car;
@@ -97,9 +90,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        FirebaseUtil.openFbReference("cardeals", this);
+        FirebaseUtil.openFbReference("cardeals", MainActivity.this);
         RecyclerView rvFavorites = (RecyclerView) findViewById(R.id.rvFavorites);
-        final CarAdapter adapter = new CarAdapter();
+        final CarAdapter adapter = new CarAdapter(true);
         mCarArrayList = adapter.getFavCars();
         setupSort(mCarArrayList, adapter);
         rvFavorites.setAdapter(adapter);

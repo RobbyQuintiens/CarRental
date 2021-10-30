@@ -23,6 +23,7 @@ public class Car implements Serializable {
     private String imageName;
     private String imageUrl;
     private Brandstof brandstof;
+    private boolean isFavorite;
 
     public Car() {
     }
@@ -185,6 +186,14 @@ public class Car implements Serializable {
 
     public void setHiredTillDate(String hiredTillDate) {
         this.hiredTillDate = hiredTillDate;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 
     public static Comparator<Car> CarBrandAZComparator = new Comparator<Car>() {

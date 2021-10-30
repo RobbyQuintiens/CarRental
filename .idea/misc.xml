@@ -34,14 +34,18 @@
         <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/drawable/ic_petrol_white.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/drawable/ic_type_gray.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/drawable/ic_type_white.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout-land/activity_list.xml" value="0.10405643738977072" />
+        <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout-land/activity_list.xml" value="0.2" />
+        <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout-land/activity_list_land.xml" value="0.11022927689594356" />
+        <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout-land/rv_carfav_land.xml" value="0.16799999999999998" />
         <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout/activity_car.xml" value="0.264" />
         <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout/activity_confirmed.xml" value="0.264" />
         <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout/activity_detail.xml" value="0.2" />
         <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout/activity_list.xml" value="0.2" />
         <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout/activity_main.xml" value="0.16" />
         <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout/fragment_detail.xml" value="0.264" />
+        <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout/fragment_detail_short.xml" value="0.2" />
         <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout/fragment_list.xml" value="0.2" />
+        <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout/fragment_list_land.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout/rv_carfav.xml" value="0.2" />
         <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/layout/spinner_item.xml" value="0.2" />
         <entry key="..\:/Users/robby/AndroidStudioProjects/CarRentalApp/CarRental/app/src/main/res/menu/detail_activity_menu.xml" value="0.12291666666666666" />

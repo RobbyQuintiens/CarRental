@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -70,6 +71,7 @@ public class CarActivity extends AppCompatActivity{
     EditText txtPrice;
     Car car;
     ImageView imageView;
+    CheckBox checkFavorite;
     private JSONArray result;
     private List<String> carBrands = new ArrayList<>();
 
@@ -87,6 +89,7 @@ public class CarActivity extends AppCompatActivity{
         txtSeats = (EditText) findViewById(R.id.txtSeats);
         txtDoors = (EditText) findViewById(R.id.txtDoors);
         txtPrice = (EditText) findViewById(R.id.txtPrice);
+        checkFavorite = (CheckBox) findViewById(R.id.checkFavorite);
         spinnerType = (Spinner) findViewById(R.id.spinnerType);
         spinnerType.setAdapter(new ArrayAdapter<Type>(this, R.layout.support_simple_spinner_dropdown_item, Type.values()));
         spinnerPetrol = (Spinner) findViewById(R.id.spinnerPetrol);
@@ -103,6 +106,7 @@ public class CarActivity extends AppCompatActivity{
         txtDoors.setText(String.valueOf(car.getDoors()));
         txtSeats.setText(String.valueOf(car.getSeats()));
         txtPrice.setText(String.valueOf(car.getDayPrice()));
+        checkFavorite.setChecked(car.isFavorite());
         showImage(car.getImageUrl());
         Button btnImage = findViewById(R.id.btnImage);
         btnImage.setOnClickListener(new View.OnClickListener() {
@@ -133,6 +137,7 @@ public class CarActivity extends AppCompatActivity{
                                 JSONObject jsonObject = response.getJSONObject(i);
                                 String brand = jsonObject.getString("name");
                                 carBrands.add(brand);
+                                Log.d("Car: ", brand);
                             }
                             updateData();
                         } catch (JSONException e) {
@@ -182,6 +187,9 @@ public class CarActivity extends AppCompatActivity{
         car.setBrandstof((Brandstof) spinnerPetrol.getSelectedItem());
         car.setDayPrice(Integer.parseInt(txtPrice.getText().toString()));
         car.setStatus(Status.AVAILABLE);
+        if (checkFavorite.isChecked()){
+            car.setFavorite(true);
+        }
         if (car.getId() == null) {
             mDatabaseReference.push().setValue(car);
         } else {

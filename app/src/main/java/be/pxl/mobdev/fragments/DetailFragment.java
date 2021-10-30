@@ -27,10 +27,10 @@ public class DetailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_detail_short, container, false);
 
         Bundle bundle = getArguments();
-        txtBrand = (TextView) view.findViewById(R.id.fragmentCarBrand);
+        txtBrand = (TextView) view.findViewById(R.id.fragmentCarPetrol);
         String item = "";
 
         if(bundle != null){

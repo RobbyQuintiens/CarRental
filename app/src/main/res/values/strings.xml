@@ -37,6 +37,8 @@
     <string name="dash">-</string>
     <string name="txt_price_capital">Price:</string>
     <string name="txt_btn_home">Home</string>
+    <string name="btn_more_text">More</string>
+    <string name="txt_checkbox_favorite">Favorite</string>
     <string-array name="sort_types">
         <item>Name Asc</item>
         <item>Name Desc</item>
