@@ -29,14 +29,30 @@ public class DetailFragment extends Fragment {
 
         Bundle bundle = getArguments();
         TextView fuelText =(TextView) view.findViewById(R.id.fragmentCarPetrolInput);
+        TextView doorsText =(TextView) view.findViewById(R.id.fragmentCarDoorsInput);
+        TextView seatsText =(TextView) view.findViewById(R.id.fragmentCarSeatsInput);
+        TextView typeText =(TextView) view.findViewById(R.id.fragmentCarTypeInput);
+        TextView priceText =(TextView) view.findViewById(R.id.fragmentCarPrice);
         String fuel = "";
+        String doors = "";
+        String price = "";
+        String seats = "";
+        String type = "";
 
         if(bundle != null){
             assert getArguments() != null;
-            fuel = getArguments().getString("item");
+            fuel = getArguments().getString("fuel");
+            doors = getArguments().getString("doors");
+            seats = getArguments().getString("seats");
+            price = getArguments().getString("price");
+            type = getArguments().getString("type");
         }
 
         fuelText.setText(fuel);
+        doorsText.setText(doors);
+        seatsText.setText(seats);
+        typeText.setText(type);
+        priceText.setText(price);
 
         return view;
     }

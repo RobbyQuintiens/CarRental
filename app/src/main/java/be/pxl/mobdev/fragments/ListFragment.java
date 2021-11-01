@@ -99,7 +99,11 @@ public class ListFragment extends Fragment implements AdapterView.OnItemSelected
             // Visible: send bundle
             DetailFragment newFragment = new DetailFragment();
             Bundle bundle = new Bundle();
-            bundle.putString("item", car.getBrandstof().toString());
+            bundle.putString("fuel", car.getBrandstof().toString());
+            bundle.putString("price", String.valueOf(car.getDayPrice()));
+            bundle.putString("doors", String.valueOf(car.getDoors()));
+            bundle.putString("seats", String.valueOf(car.getSeats()));
+            bundle.putString("type", car.getType().toString());
             newFragment.setArguments(bundle);
 
             FragmentTransaction transaction = getFragmentManager().beginTransaction();

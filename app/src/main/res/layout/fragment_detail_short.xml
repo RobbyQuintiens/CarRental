@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/fragmentPrice"
+            android:id="@+id/fragmentCarPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/btn_margin_large3"
@@ -41,8 +41,8 @@
             android:textColor="#000000"
             android:textSize="17sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/fragmentPrice"
-            app:layout_constraintTop_toTopOf="@+id/fragmentPrice" />
+            app:layout_constraintStart_toEndOf="@+id/fragmentCarPrice"
+            app:layout_constraintTop_toTopOf="@+id/fragmentCarPrice" />
 
         <ImageView
             android:id="@+id/ic_doors"
@@ -51,7 +51,7 @@
             android:layout_marginStart="@dimen/btn_margin_large3"
             android:layout_marginTop="@dimen/btn_margin_top"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragmentPrice"
+            app:layout_constraintTop_toBottomOf="@+id/fragmentCarPrice"
             app:srcCompat="@drawable/ic_car_door_gray" />
 
         <TextView
