@@ -11,37 +11,34 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import be.pxl.mobdev.R;
 
 public class DetailFragment extends Fragment {
-    private TextView txtBrand;
-    private TextView txtModel;
-    private TextView txtYear;
-    private TextView txtDoors;
-    private TextView txtSeats;
-    private ImageView imageView;
+    private View mDetailFragmentView;
+    private RecyclerView mRvCars;
 
-    @Nullable
+    public DetailFragment(){
+
+    }
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_detail_short, container, false);
 
         Bundle bundle = getArguments();
-        txtBrand = (TextView) view.findViewById(R.id.fragmentCarPetrol);
-        String item = "";
+        TextView fuelText =(TextView) view.findViewById(R.id.fragmentCarPetrolInput);
+        String fuel = "";
 
         if(bundle != null){
-            item = getArguments().getString("item");
+            assert getArguments() != null;
+            fuel = getArguments().getString("item");
         }
 
-        txtBrand.setText(item);
-
+        fuelText.setText(fuel);
 
         return view;
     }
-
 
 }

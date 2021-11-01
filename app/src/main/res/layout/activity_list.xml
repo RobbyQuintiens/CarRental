@@ -8,7 +8,7 @@
     android:background="#f8f8f8">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView2"
+        android:id="@+id/fragmentList"
         android:name="be.pxl.mobdev.fragments.ListFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

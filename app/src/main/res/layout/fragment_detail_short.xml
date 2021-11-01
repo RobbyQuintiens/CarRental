@@ -6,50 +6,19 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/fragmentCarBrand"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/btn_margin_top"
-        android:layout_marginTop="@dimen/txt_margin_standard"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/fragmentCarModel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/txt_margin_standard"
-        android:layout_marginTop="@dimen/txt_margin_standard"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/fragmentCarBrand"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/fragmentCarYear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/btn_margin_top"
-        android:layout_marginTop="@dimen/txt_margin_standard"
-        android:layout_marginBottom="@dimen/txt_margin_standard"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragmentCarBrand" />
-
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/detailLayoutBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/btn_margin_top"
+        android:layout_marginEnd="@dimen/btn_margin_top"
+        android:layout_marginTop="@dimen/btn_margin_large"
+        android:background="@drawable/bg_layout_radius_gray_full"
         android:paddingBottom="@dimen/btn_margin_top"
-        android:background="@drawable/bg_layout_radius_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragmentCarYear">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/fragmentPrice"
@@ -111,8 +80,8 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="@dimen/btn_margin_large3"
-            android:layout_marginEnd="@dimen/btn_margin_large3"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="@dimen/btn_margin_large3"
             android:background="#d5d5d5"
             app:layout_constraintTop_toBottomOf="@+id/ic_doors" />
 
@@ -149,8 +118,8 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="@dimen/btn_margin_large3"
-            android:layout_marginEnd="@dimen/btn_margin_large3"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="@dimen/btn_margin_large3"
             android:background="#d5d5d5"
             app:layout_constraintTop_toBottomOf="@+id/ic_seats" />
 
@@ -188,9 +157,9 @@
         <View
             android:id="@+id/line03"
             android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:layout_marginStart="@dimen/btn_margin_large3"
             android:layout_marginEnd="@dimen/btn_margin_large3"
-            android:layout_height="1dp"
             android:background="#d5d5d5"
             app:layout_constraintTop_toBottomOf="@+id/ic_type" />
 
@@ -224,22 +193,6 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/fragmentButtonMore"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginStart="@dimen/txt_margin_standard"
-        android:layout_marginEnd="@dimen/txt_margin_standard"
-        android:background="@drawable/gradient"
-        android:text="@string/btn_more_text"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="@id/detailLayoutBackground"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailLayoutBackground" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

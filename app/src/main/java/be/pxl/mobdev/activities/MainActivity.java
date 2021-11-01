@@ -28,9 +28,10 @@ import be.pxl.mobdev.models.Car;
 import be.pxl.mobdev.util.FirebaseUtil;
 import be.pxl.mobdev.views.CarAdapter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     ArrayList<Car> mCarArrayList;
+    CarAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,10 +93,11 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         FirebaseUtil.openFbReference("cardeals", MainActivity.this);
         RecyclerView rvFavorites = (RecyclerView) findViewById(R.id.rvFavorites);
-        final CarAdapter adapter = new CarAdapter(true);
-        mCarArrayList = adapter.getFavCars();
-        setupSort(mCarArrayList, adapter);
-        rvFavorites.setAdapter(adapter);
+        mAdapter = new CarAdapter(this,true, this);
+        mCarArrayList = mAdapter.getFavCars();
+        //mAdapter.setClickListener(this);
+        setupSort(mCarArrayList, mAdapter);
+        rvFavorites.setAdapter(mAdapter);
         LinearLayoutManager carsLayoutManager =
                 new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         rvFavorites.setLayoutManager(carsLayoutManager);
@@ -141,5 +143,19 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        Car selectedCar = mCarArrayList.get(i);
+        Intent intent = new Intent(view.getContext(), DetailActivity.class);
+        intent.putExtra(Intent.EXTRA_TEXT, selectedCar);
+        view.getContext().startActivity(intent);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }
