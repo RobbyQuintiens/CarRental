@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -24,6 +25,7 @@ import java.util.Collections;
 
 import be.pxl.mobdev.R;
 import be.pxl.mobdev.activities.DetailActivity;
+import be.pxl.mobdev.activities.MainActivity;
 import be.pxl.mobdev.models.Car;
 import be.pxl.mobdev.views.CarAdapter;
 
@@ -52,6 +54,18 @@ public class ListFragment extends Fragment implements AdapterView.OnItemSelected
         return view;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Intent mainIntent = new Intent(getContext(), MainActivity.class);
+                startActivity(mainIntent);
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+    }
 
     private void setupSort(ArrayList<Car> carArrayList, CarAdapter carAdapter) {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
@@ -93,7 +107,6 @@ public class ListFragment extends Fragment implements AdapterView.OnItemSelected
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         car = mCarArrayList.get(i);
-        Toast.makeText(getActivity(), car.getModel(), Toast.LENGTH_LONG).show();
         DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentById(R.id.fragmentDetail);
         if (detailFragment != null && detailFragment.isVisible()) {
             // Visible: send bundle
@@ -104,6 +117,8 @@ public class ListFragment extends Fragment implements AdapterView.OnItemSelected
             bundle.putString("doors", String.valueOf(car.getDoors()));
             bundle.putString("seats", String.valueOf(car.getSeats()));
             bundle.putString("type", car.getType().toString());
+            bundle.putString("brand", car.getBrand().toString());
+            bundle.putString("model", car.getModel().toString());
             newFragment.setArguments(bundle);
 
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
