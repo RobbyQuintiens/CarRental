@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f8f8f8"
+    tools:context=".activities.UserActivity">
+
+    <TextView
+        android:id="@+id/txtProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/txt_margin_standard"
+        android:layout_marginTop="@dimen/btn_margin_large3"
+        android:text="@string/txt_head_profiles"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profileLayoutBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/btn_margin_top"
+        android:layout_marginEnd="@dimen/btn_margin_top"
+        android:layout_marginTop="@dimen/btn_margin_large"
+        android:paddingBottom="@dimen/btn_margin_top"
+        android:background="@drawable/bg_layout_radius"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtProfile">
+
+        <TextView
+            android:id="@+id/txtAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/btn_margin_top"
+            android:layout_marginTop="@dimen/btn_margin_top"
+            android:text="@string/txt_head_account"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/btn_margin_top"
+            android:text="@string/txt_user"
+            android:textSize="19sp"
+            app:layout_constraintStart_toStartOf="@+id/txtAccount"
+            app:layout_constraintTop_toBottomOf="@+id/txtAccount" />
+
+        <TextView
+            android:id="@+id/textUserNameValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/btn_margin_large"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textUserName"
+            app:layout_constraintStart_toEndOf="@+id/textUserName" />
+
+        <TextView
+            android:id="@+id/textUserMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/btn_margin_top"
+            android:text="@string/txt_mail"
+            android:textSize="19sp"
+            app:layout_constraintStart_toStartOf="@+id/textUserName"
+            app:layout_constraintTop_toBottomOf="@+id/textUserName" />
+
+        <TextView
+            android:id="@+id/textUserMailValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/btn_margin_large"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textUserMail"
+            app:layout_constraintStart_toEndOf="@+id/textUserMail" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

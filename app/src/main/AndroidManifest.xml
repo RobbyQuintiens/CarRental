@@ -40,6 +40,10 @@
             android:name=".activities.ConfirmedActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".activities.UserActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

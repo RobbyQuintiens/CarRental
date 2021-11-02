@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import com.firebase.ui.auth.AuthUI;
@@ -41,8 +42,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         btnExloreAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ListActivity.class);
-                startActivity(intent);
+                Intent exploreIntent = new Intent(MainActivity.this, ListActivity.class);
+                startActivity(exploreIntent);
+            }
+        });
+        ImageButton btnProfile = (ImageButton) findViewById(R.id.btnProfile);
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent profileIntent = new Intent(MainActivity.this, UserActivity.class);
+                startActivity(profileIntent);
             }
         });
     }
