@@ -16,7 +16,7 @@ public class UserActivity extends AppCompatActivity {
 
     TextView txtUser;
     TextView txtMail;
-    String user;
+    String username;
     String mail;
 
     @Override
@@ -26,19 +26,14 @@ public class UserActivity extends AppCompatActivity {
         txtUser = (TextView) findViewById(R.id.textUserNameValue);
         txtMail = (TextView) findViewById(R.id.textUserMailValue);
 
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseAuth.AuthStateListener authStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                if (firebaseUser != null){
-                    user = firebaseUser.getDisplayName();
-                    mail = firebaseUser.getEmail();
-                }
-            }
-        };
-
-        txtUser.setText(user);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user != null){
+            username = user.getDisplayName();
+            mail = user.getEmail();
+        }
+        
+        txtUser.setText(username);
+        txtMail.setText(mail);
 
     }
 
